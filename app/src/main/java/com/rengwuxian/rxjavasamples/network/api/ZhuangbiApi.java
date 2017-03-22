@@ -11,6 +11,6 @@ import retrofit2.http.Query;
 import rx.Observable;
 
 public interface ZhuangbiApi {
-    @GET("search")
-    Observable<List<ZhuangbiImage>> search(@Query("q") String query);
+    @GET("search")    // 改成POST也行
+    Observable<List<ZhuangbiImage>> search(@Query("q") String key);   //https://www.zhuangbi.info/search?q=在下   q是参数名字
 }

@@ -15,14 +15,14 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.rengwuxian.rxjavasamples.BaseFragment;
-import com.rengwuxian.rxjavasamples.network.Network;
 import com.rengwuxian.rxjavasamples.R;
 import com.rengwuxian.rxjavasamples.adapter.ZhuangbiListAdapter;
 import com.rengwuxian.rxjavasamples.model.ZhuangbiImage;
+import com.rengwuxian.rxjavasamples.network.Network;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
 import rx.Observer;
@@ -30,11 +30,13 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class ElementaryFragment extends BaseFragment {
-    @Bind(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
-    @Bind(R.id.gridRv) RecyclerView gridRv;
+    @BindView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.gridRv) RecyclerView gridRv;
 
     ZhuangbiListAdapter adapter = new ZhuangbiListAdapter();
-    Observer<List<ZhuangbiImage>> observer = new Observer<List<ZhuangbiImage>>() {
+
+
+    Observer<List<ZhuangbiImage>> observer = new Observer<List<ZhuangbiImage>>() {  // observer 观察者  subscriber
         @Override
         public void onCompleted() {
         }
@@ -64,7 +66,7 @@ public class ElementaryFragment extends BaseFragment {
 
     private void search(String key) {
         subscription = Network.getZhuangbiApi()
-                .search(key)
+                .search(key)                          // 这里生成observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);

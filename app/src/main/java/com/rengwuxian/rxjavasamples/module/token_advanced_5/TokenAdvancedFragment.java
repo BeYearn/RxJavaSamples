@@ -13,13 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rengwuxian.rxjavasamples.BaseFragment;
-import com.rengwuxian.rxjavasamples.network.Network;
 import com.rengwuxian.rxjavasamples.R;
-import com.rengwuxian.rxjavasamples.network.api.FakeApi;
 import com.rengwuxian.rxjavasamples.model.FakeThing;
 import com.rengwuxian.rxjavasamples.model.FakeToken;
+import com.rengwuxian.rxjavasamples.network.Network;
+import com.rengwuxian.rxjavasamples.network.api.FakeApi;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import rx.Observable;
@@ -30,8 +30,8 @@ import rx.schedulers.Schedulers;
 
 public class TokenAdvancedFragment extends BaseFragment {
 
-    @Bind(R.id.tokenTv) TextView tokenTv;
-    @Bind(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.tokenTv) TextView tokenTv;
+    @BindView(R.id.swipeRefreshLayout) SwipeRefreshLayout swipeRefreshLayout;
     final FakeToken cachedFakeToken = new FakeToken(true);
     boolean tokenUpdated;
 

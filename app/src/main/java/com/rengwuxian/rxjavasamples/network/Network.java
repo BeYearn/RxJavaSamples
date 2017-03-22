@@ -25,7 +25,7 @@ public class Network {
         if (zhuangbiApi == null) {
             Retrofit retrofit = new Retrofit.Builder()
                     .client(okHttpClient)
-                    .baseUrl("http://www.zhuangbi.info/")
+                    .baseUrl("http://www.zhuangbi.info/")    //Retrofit2 的baseUlr 必须以 /（斜线） 结束，不然会抛出一个IllegalArgumentException
                     .addConverterFactory(gsonConverterFactory)
                     .addCallAdapterFactory(rxJavaCallAdapterFactory)
                     .build();
