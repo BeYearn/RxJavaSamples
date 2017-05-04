@@ -88,13 +88,13 @@ public class MainActivity extends AppCompatActivity {
         });
         tabLayout.setupWithViewPager(viewPager);
 
+
+
         PowerManager pm = (PowerManager) MainActivity.this.getSystemService(Context.POWER_SERVICE);  //需要<uses-permission android:name="android.permission.WAKE_LOCK"/>
         final PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.FULL_WAKE_LOCK, "TEST");  // 这些屏显的flag自行调整
         //是否需计算锁的数量
         wl.setReferenceCounted(false);
-
         toggle = false;
-
         //对Toolbar左边的导航图标进行监听
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
